@@ -1,6 +1,5 @@
 import time
 
-
 myStringList = [] # intialise an empty list to hold strings from text file
 
 with open('cpt316-assignment-1-strings.txt') as f:
