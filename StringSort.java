@@ -28,7 +28,7 @@ class StringSort{
 
         long end = System.currentTimeMillis();
 
-        System.out.println("--- " + (end-start) + " miliseconds " + " to sort in Java" + " ---");
+        System.out.println("--- " + (end-start) + " miliseconds " + " to bubble sort in Java" + " ---");
     }
 
     public static void main(String[] args)
