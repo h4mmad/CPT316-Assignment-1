@@ -1,1 +1,1 @@
-> Bubble sort implementation in Python and Java
+Bubble sort implementation in Python and Java
