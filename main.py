@@ -13,13 +13,17 @@ def my_bubble_sort(arr):
     n = len(arr)
 
     for i in range(0, n):
+        isSorted = True
         for j in range(1, n-i):
             if arr[j] < arr[j-1]:
                 temp = arr[j]
                 arr[j] = arr[j-1]
                 arr[j-1] = temp
-                
-                
+                isSorted = False
+        if isSorted:
+            print("--- %s miliseconds to bubble sort in python ---" % (round(time.time() * 1000) - start_time))
+            return 
+    
     print("--- %s miliseconds to bubble sort in python ---" % (round(time.time() * 1000) - start_time))
     return
 

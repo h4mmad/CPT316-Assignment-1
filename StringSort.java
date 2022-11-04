@@ -1,63 +1,69 @@
+import java.io.BufferedReader;
 import java.io.File;  
-import java.io.FileNotFoundException;  
-import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 class StringSort{
  
-    public static void sortStrings(ArrayList<String> arr, int n)
-    {
+    public static void my_bubble_sort(ArrayList<String> myArrayList){
 
       long start = System.currentTimeMillis();
 
-        String temp;
- 
-        // Sorting strings using bubble sort
-        for (int j = 0; j < n - 1; j++)
-        {
-            for (int i = j + 1; i < n; i++)
-            {
-                if (arr.get(j).compareTo(arr.get(i)) > 0)
+      int myArrayListSize = myArrayList.size();
+
+      String temp;
+
+      for (int i = 0; i < myArrayListSize; i++){
+        for (int j=1; j < myArrayListSize-i; j++){
+          if (myArrayList.get(j-1).compareTo(myArrayList.get(j)) > 0)
                 {
-                    temp = arr.get(j);
-                    arr.set(j, arr.get(i));
-                    arr.set(i, temp);
-                }
-            }
-        }
-
-        long end = System.currentTimeMillis();
-
-        System.out.println("--- " + (end-start) + " miliseconds " + " to bubble sort in Java" + " ---");
+                    temp = myArrayList.get(j);
+                    myArrayList.set(j, myArrayList.get(j-1));
+                    myArrayList.set(j-1, temp);
+                }   
+        }  
+      }
+        System.out.println("--- " + (System.currentTimeMillis()-start) + " miliseconds " + " to bubble sort in Java" + " ---");
     }
+
+
+    public static void printStrings(ArrayList<String> list, int words){
+      for (int i = 0; i < words; i++){
+        System.out.print(list.get(i) + " ");
+      }
+    }
+
 
     public static void main(String[] args)
     {
 
         ArrayList<String> myArrayList = new ArrayList<String>();
 
-
         // Code to read from text file and store in array list
         try {
-            File myObj = new File("cpt316-assignment-1-strings.txt");
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-              String data = myReader.nextLine();
-              myArrayList.add(data);
+
+            File file = new File("cpt316-assignment-1-strings.txt");
+            BufferedReader br = new BufferedReader(new FileReader(file));
+
+            String st;
+            while ((st = br.readLine()) != null){
+                myArrayList.add(st);
             }
-            myReader.close();
-          } catch (FileNotFoundException e) {
+              br.close();
+          } 
+          catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
           }
+          catch (IOException e){
+            System.out.println(e);
+          }
         //////////////////////////////////////////////////////
-        sortStrings(myArrayList, myArrayList.size());
-
         
-
-        for (int i=0; i < 10; i++){
-          System.out.print(myArrayList.get(i) + " ");
-        }
+        my_bubble_sort(myArrayList);
+        printStrings(myArrayList, 10);
 
         
         
