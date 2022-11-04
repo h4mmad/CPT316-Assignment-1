@@ -8,11 +8,13 @@ import java.util.ArrayList;
 class StringSort{
  
     //Bubble sort algorithm used
+    //start varibale used to calculate total time for sorting
     public static void my_bubble_sort(ArrayList<String> myArrayList){
+
+      int myArrayListSize = myArrayList.size();
 
       long start = System.currentTimeMillis();
 
-      int myArrayListSize = myArrayList.size();
 
       String temp;
 
