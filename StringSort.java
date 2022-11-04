@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 class StringSort{
  
+    //Bubble sort algorithm used
     public static void my_bubble_sort(ArrayList<String> myArrayList){
 
       long start = System.currentTimeMillis();
@@ -15,6 +16,7 @@ class StringSort{
 
       String temp;
 
+      //If the current string is smaller than the previous string, swap them using temp variable
       for (int i = 0; i < myArrayListSize; i++){
         for (int j=1; j < myArrayListSize-i; j++){
           if (myArrayList.get(j-1).compareTo(myArrayList.get(j)) > 0)
@@ -29,6 +31,7 @@ class StringSort{
     }
 
 
+    //Print function takes in the ArrayList and number of words to print
     public static void printStrings(ArrayList<String> list, int words){
       for (int i = 0; i < words; i++){
         System.out.print(list.get(i) + " ");
@@ -42,6 +45,7 @@ class StringSort{
         ArrayList<String> myArrayList = new ArrayList<String>();
 
         // Code to read from text file and store in array list
+        // Array list used as the number of strings don't need to be counted to initialize array
         try {
 
             File file = new File("cpt316-assignment-1-strings.txt");
@@ -60,12 +64,11 @@ class StringSort{
           catch (IOException e){
             System.out.println(e);
           }
-        //////////////////////////////////////////////////////
         
+        
+        //Sorting and then printing ten words
         my_bubble_sort(myArrayList);
         printStrings(myArrayList, 10);
 
-        
-        
     }
 }
